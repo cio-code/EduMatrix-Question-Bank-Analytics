@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduMatrix - Sign in</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+  <main class="w-full max-w-sm">
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-7 space-y-5">
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="School logo" class="w-14 h-14">
+        <div>
+          <h1 class="text-lg font-bold text-slate-900 leading-tight">EduMatrix</h1>
+          <p class="text-xs text-slate-500">Question bank &amp; item analysis</p>
+        </div>
+      </div>
+
+      <div id="notice" class="hidden text-xs rounded-lg p-3"></div>
+
+      <form id="login-form" class="space-y-3" autocomplete="on">
+        <div>
+          <label for="username" class="lbl">Username</label>
+          <input id="username" name="username" type="text" class="inp" style="font-size:.875rem;padding:.55rem .65rem" autocomplete="username" required autofocus>
+        </div>
+        <div>
+          <label for="password" class="lbl">Password</label>
+          <input id="password" name="password" type="password" class="inp" style="font-size:.875rem;padding:.55rem .65rem" autocomplete="current-password" required>
+        </div>
+        <button id="btn-login" type="submit" class="btn btn-primary w-full justify-center" style="font-size:.875rem;padding:.65rem">Sign in</button>
+      </form>
+
+      <p class="text-xs text-slate-400">Accounts are created by the administrator.</p>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      if (Auth.getSession()) { location.href = "app.html"; return; }
+
+      const notice = document.getElementById("notice");
+      function say(text, tone) {
+        notice.textContent = text;
+        notice.className = "text-xs rounded-lg p-3 " + (tone === "error" ? "bg-rose-50 text-rose-700 border border-rose-200" : "bg-amber-50 text-amber-800 border border-amber-200");
+      }
+
+      if (new URLSearchParams(location.search).get("expired")) say("Your session expired. Please sign in again.", "warn");
+      if (EDU_CONFIG.API_URL.indexOf("PASTE_") === 0) say("Setup needed: paste your Apps Script web app URL into frontend/js/config.js.", "warn");
+
+      document.getElementById("login-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const btn = document.getElementById("btn-login");
+        btn.disabled = true; btn.textContent = "Signing in…";
+        try {
+          await Auth.login(document.getElementById("username").value, document.getElementById("password").value);
+          location.href = "app.html";
+        } catch (err) {
+          say(err.message, "error");
+          btn.disabled = false; btn.textContent = "Sign in";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

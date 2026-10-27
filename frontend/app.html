@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduMatrix - Question Bank & Item Analysis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/print.css">
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+  <header class="bg-indigo-900 text-white shadow-md no-print">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="" class="w-10 h-10 rounded bg-white p-0.5">
+        <div>
+          <h1 class="font-bold text-lg tracking-tight leading-tight">EduMatrix Question Bank &amp; Analytics</h1>
+          <p class="text-xs text-indigo-300">Multi-faculty curation and post-exam item analysis (Form 4)</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-xs">
+        <div class="text-right">
+          <div id="user-name" class="font-semibold"></div>
+          <div id="user-role" class="text-indigo-300"></div>
+        </div>
+        <button id="btn-password" class="bg-indigo-800 hover:bg-indigo-700 border border-indigo-600 px-3 py-2 rounded">Change password</button>
+        <button id="btn-logout" class="bg-indigo-800 hover:bg-indigo-700 border border-indigo-600 px-3 py-2 rounded">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="bg-white border-b border-slate-200 shadow-sm no-print">
+    <div id="nav-tabs" class="max-w-7xl mx-auto px-4 flex gap-8 overflow-x-auto"></div>
+  </nav>
+
+  <main id="step-container" class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full space-y-4"></main>
+
+  <div id="pw-modal" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center p-4 z-50 no-print">
+    <div class="bg-white rounded-lg max-w-sm w-full p-5 space-y-3">
+      <h2 class="font-bold text-sm text-slate-800">Change password</h2>
+      <div><label for="pw-old" class="lbl">Current password</label><input id="pw-old" type="password" class="inp" autocomplete="current-password"></div>
+      <div><label for="pw-new" class="lbl">New password (8+ characters)</label><input id="pw-new" type="password" class="inp" autocomplete="new-password"></div>
+      <div><label for="pw-new2" class="lbl">Repeat new password</label><input id="pw-new2" type="password" class="inp" autocomplete="new-password"></div>
+      <div class="flex justify-end gap-2">
+        <button id="pw-cancel" class="btn btn-light">Cancel</button>
+        <button id="pw-save" class="btn btn-primary">Save password</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
