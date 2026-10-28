@@ -1,0 +1,58 @@
+<!--
+  FORM 4 TEMPLATE
+  The header, logo, document box and signature block below are FIXED.
+  Only the double-curly-brace fields (COURSE, SCHOOL_YEAR, TOS_ROWS ...) are filled in by js/steps/step5-form4.js. DOC_NO is the number given automatically to each saved exam.
+  Edit the fixed parts here if the official form changes.
+-->
+<table class="form4-table" style="margin-bottom:6px">
+  <tr>
+    <td style="width:80px;text-align:center;vertical-align:middle"><img src="assets/logo.png" alt="JHCSC logo" style="width:64px;height:64px;display:inline-block"></td>
+    <td style="text-align:center;vertical-align:middle">
+      <div style="font-size:11px">Republic of the Philippines</div>
+      <div style="font-weight:bold;font-size:14px;text-transform:uppercase">J.H. Cerilles State College</div>
+      <div style="font-size:11px">Mati, San Miguel, Zamboanga del Sur</div>
+    </td>
+    <td style="width:150px;font-size:11px;vertical-align:middle">
+      <div><strong>Doc No.:</strong> {{DOC_NO}}</div>
+      <div><strong>Revision:</strong> 00</div>
+      <div><strong>Effective:</strong> 2026</div>
+    </td>
+  </tr>
+</table>
+
+<div style="text-align:center;font-weight:bold;font-size:12px;text-transform:uppercase;margin-bottom:8px;border:1px solid #000;padding:3px;background:#f1f5f9">
+  JHCSC-CIO Form 4: Table of Specification with Test Questionnaire [{{COURSE_UPPER}}]
+</div>
+
+<div style="font-weight:bold;font-size:12px;margin-bottom:4px">V. Table of Specifications ({{SCHOOL_YEAR}})</div>
+<table class="form4-table form4-compact" style="margin-bottom:10px;text-align:center">
+  <thead>
+    <tr><th>Code</th><th style="width:34%">Intended Learning Outcomes</th><th>Hours</th><th>%</th><th>Easy</th><th>Average</th><th>Difficult</th><th>Total</th></tr>
+  </thead>
+  <tbody>{{TOS_ROWS}}</tbody>
+</table>
+
+<div style="font-weight:bold;font-size:12px;margin-bottom:4px">VI. Test Questionnaire ({{TOTAL_ITEMS}} items) &mdash; {{EXAM_LABEL}}</div>
+<table class="form4-table form4-compact" style="margin-bottom:14px">
+  <thead>
+    <tr><th style="width:30px;text-align:center">Item</th><th style="width:54px;text-align:center">ILO / Level</th><th>Question and options (A, B, C, D)</th></tr>
+  </thead>
+  <tbody>{{QUESTION_ROWS}}</tbody>
+</table>
+
+<table class="form4-table keep-together" style="text-align:center;font-size:12px;margin-top:14px">
+  <tr>
+    <td style="width:33%;padding:8px">
+      <p>Prepared by:</p><div style="height:20px"></div>
+      <p style="font-weight:bold;border-bottom:1px solid #000;display:inline-block;padding:0 16px">Subject Instructors / Faculty</p>
+    </td>
+    <td style="width:33%;padding:8px">
+      <p>Reviewed by:</p><div style="height:20px"></div>
+      <p style="font-weight:bold;border-bottom:1px solid #000;display:inline-block;padding:0 16px">GECAC</p>
+    </td>
+    <td style="width:33%;padding:8px">
+      <p>Approved by:</p><div style="height:20px"></div>
+      <p style="font-weight:bold;border-bottom:1px solid #000;display:inline-block;padding:0 16px">&amp; CID</p>
+    </td>
+  </tr>
+</table>
